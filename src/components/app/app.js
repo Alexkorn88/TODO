@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { Component } from 'react';
 
 import Header from '../header';
@@ -5,6 +6,7 @@ import TaskList from '../task-list';
 import Footer from '../footer';
 
 import './app.css';
+import './appTimer.css';
 
 export default class App extends Component {
   maxId = 100;
@@ -19,14 +21,26 @@ export default class App extends Component {
     filter: 'all',
   };
 
+  // componentDidMount() {
+  //   // eslint-disable-next-line no-unused-expressions
+  //   localStorage.getItem('state') && this.setState(() => JSON.parse(localStorage.getItem('state')));
+  // }
+
+  // componentDidUpdate() {
+  //   localStorage.setItem('state', JSON.stringify(this.state));
+  // }
+
   // eslint-disable-next-line react/sort-comp
-  createTaskItem(label, id) {
+  createTaskItem(label, min, sec, id) {
     return {
       label,
       className: '',
       completed: false,
       id: id ?? this.maxId++,
       checked: false,
+      min: min ?? '00',
+      sec: sec ?? '59',
+      timeSec: null,
     };
   }
 
@@ -40,8 +54,8 @@ export default class App extends Component {
     });
   };
 
-  onItemEdit = (text, id) => {
-    const newItem = this.createTaskItem(text, id);
+  onItemEdit = (text, min, sec, id) => {
+    const newItem = this.createTaskItem(text, min, sec, id);
     this.setState(({ todoData }) => {
       // eslint-disable-next-line no-return-assign, no-param-reassign
       const newArray = todoData.map((el) => (el.id === id ? (el = newItem) : el));
@@ -51,8 +65,12 @@ export default class App extends Component {
     });
   };
 
-  addItem = (text) => {
-    const newItem = this.createTaskItem(text);
+  getPadTime = (time) => time.toString().padStart(2, '0');
+
+  addItem = (text, timeSec) => {
+    const min = this.getPadTime(Math.floor(timeSec / 60));
+    const sec = this.getPadTime(timeSec - min * 60);
+    const newItem = this.createTaskItem(text, min, sec, timeSec);
     this.setState(({ todoData }) => {
       const newArr = [...todoData, newItem];
       return {
