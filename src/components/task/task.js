@@ -31,16 +31,16 @@ export default class Task extends Component {
   // componentWillUnmount() {
   //   clearInterval(this.timeId);
   // }
-  onEdited = () => {
-    this.setState({ isEdit: true });
-    this.setState({ label: this.props.label });
-  };
+  // onEdited = () => {
+  //   this.setState({ isEdit: true });
+  //   this.setState({ label: this.props.label });
+  // };
 
-  onLabelChange = (e) => {
-    this.setState({
-      label: e.target.value,
-    });
-  };
+  // onLabelChange = (e) => {
+  //   this.setState({
+  //     label: e.target.value,
+  //   });
+  // };
   onEdited = () => {
     this.setState({ isEdit: true });
     this.setState({ label: this.props.label });
@@ -87,7 +87,7 @@ export default class Task extends Component {
     const keyPress = (e) => {
       const code = e.keyCode || e.which;
       if (code === 13) {
-        onItemEdit(this.state.label, id);
+        onItemEdit(this.state.label, this.state.min, this.state.sec, id);
         this.setState({ isEdit: false });
       }
     };
