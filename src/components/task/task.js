@@ -116,8 +116,10 @@ export default class Task extends Component {
           <label>
             <span className="description">
               {label}
-              <button className="icon icon-play" onClick={this.handleStart} />
-              <button className="icon icon-pause" onClick={this.handleStop} />
+              <div className="btn__startStop">
+                <button className="icon icon-play" onClick={this.handleStart} />
+                <button className="icon icon-pause" onClick={this.handleStop} />
+              </div>
               {this.state.min}:{this.state.sec}
             </span>
             <span className="created">created {distance}</span>

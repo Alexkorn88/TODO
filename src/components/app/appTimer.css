@@ -311,6 +311,8 @@ body {
 
 .icon-pause:after {
   content: '⏸';
+  position: relative;
+  top: 1px;
 }
 
 .icon-play:after {
