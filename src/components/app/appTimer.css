@@ -284,6 +284,8 @@ body {
 
 .todo-list li .icon-destroy:after {
   content: '×';
+  position: relative;
+  bottom: 3px;
 }
 
 .todo-list li .icon-edit {
@@ -296,6 +298,8 @@ body {
 
 .todo-list li .icon-edit:after {
   content: '✎';
+  position: relative;
+  bottom: 3px;
 }
 
 .todo-list li .icon-pause,
@@ -312,11 +316,13 @@ body {
 .icon-pause:after {
   content: '⏸';
   position: relative;
-  top: 1px;
+  bottom: 2px;
 }
 
 .icon-play:after {
   content: '▶';
+  position: relative;
+  bottom: 3px;
 }
 
 .todo-list li .edit {
