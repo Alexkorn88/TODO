@@ -56,6 +56,7 @@ export default class Task extends Component {
   handleStart = () => {
     if (this.state.isTime) return;
     this.setState({ isTime: true });
+    this.setState({ timeSec: this.state.timeSec >= 1 ? this.state.timeSec - 1 : 0 });
     this.timeId = setInterval(() => {
       this.setState({ timeSec: this.state.timeSec >= 1 ? this.state.timeSec - 1 : 0 });
       this.setState({

@@ -70,7 +70,7 @@ export default class App extends Component {
   addItem = (text, timeSec) => {
     const min = this.getPadTime(Math.floor(timeSec / 60));
     const sec = this.getPadTime(timeSec - min * 60);
-    const newItem = this.createTaskItem(text, min, sec, timeSec);
+    const newItem = this.createTaskItem(text, min, sec);
     this.setState(({ todoData }) => {
       const newArr = [...todoData, newItem];
       return {
